@@ -23,7 +23,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status202Accepted)]
     public async Task<IActionResult> Get()
     {
         using (var client = new HttpClient())
@@ -40,7 +40,7 @@ public class ProductController : ControllerBase
             catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException != null ? ex.InnerException.ToString() : ex.Message);
-                return BadRequest(ex.InnerException != null ? ex.InnerException.ToString() : ex.Message);
+                throw ex;
             }
         }
     }
@@ -72,7 +72,7 @@ public class ProductController : ControllerBase
             catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException != null ? ex.InnerException.ToString() : ex.Message);
-                return BadRequest(ex.InnerException != null ? ex.InnerException.ToString() : ex.Message);
+                throw ex;
             }
         }
     }
@@ -111,7 +111,7 @@ public class ProductController : ControllerBase
             catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException != null ? ex.InnerException.ToString() : ex.Message);
-                return BadRequest(ex.InnerException != null ? ex.InnerException.ToString() : ex.Message);
+                throw ex;
             }
         }
     }
